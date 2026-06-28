@@ -144,11 +144,11 @@ The contract `ZebraPayrollContract` exposes the following functions:
 - `get_view_key(env: Env, tx_hash: BytesN<32>) -> Option<Bytes>`: Retrieve encrypted metadata view key for audits.
 - `get_audit_record(env: Env, tx_hash: BytesN<32>) -> Option<PayrollAuditRecord>`: Retrieve total amount, KYC root, encrypted key, and metadata URI.
 
-### 🔭 Roadmap — designed, NOT deployed on the contract above
+### 🔭 v3 extension — deployed as a dedicated contract, not wired into the demo web app
 
-> **Honest status:** the deployed circuit proves exactly three public signals — `[total_payroll, treasury_balance, kyc_root]` (salary-sum = total, solvency, KYC membership). The item below is **design-stage**: `release_payroll_v3` is **not deployed**, and `payroll_circuit/src/multi_currency.nr` is **not compiled, proven, or wired** — its FX / tax-split / multi-currency logic would be plain on-chain arithmetic and is **not** proven by any circuit yet.
+> **Honest status:** the v1 circuit proves exactly three public signals — `[total_payroll, treasury_balance, kyc_root]` (salary-sum = total, solvency, KYC membership). The v3 multi-currency payroll ships as a **separate, dedicated contract** with its own UltraHonk VK (circuit `payroll_circuit_mc`), verified on Stellar testnet and reproducible via `npm run prove:demo:mc`. It is **not wired into the hosted demo web app**, which demos the v1 flow only.
 
-- `release_payroll_v3(...)` **[planned v3]** — Multi-currency payroll (USDC/EURC/MXNB) with per-jurisdiction tax withholding and ZK-verified FX conversion, distributing withholdings to N tax authorities in one atomic transaction. Backing circuit `payroll_circuit/src/multi_currency.nr` is design-stage only.
+- `release_payroll_v3(...)` **[v3, shipped]** — Multi-currency payroll (USDC/EURC/MXNB) with per-jurisdiction tax withholding and ZK-verified FX conversion, distributing withholdings to N tax authorities in one atomic transaction, against a dedicated multi-currency VK on testnet contract `CBXJ75PDFAMMGL2VHEXBJX2UT3GSWPHEZZULOFZWUZLN57V6UUBOL6NB`. Reproduce: `npm run prove:demo:mc`.
 
 > **Honest status:** the hosted web app is a **demo sandbox** — it visualizes the CFO/Auditor
 > flow with local crypto _simulations_ for instant UX. The _real_ cryptography (proof

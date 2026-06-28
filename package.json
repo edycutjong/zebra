@@ -9,7 +9,7 @@
   "bugs": {
     "url": "https://github.com/edycutjong/zebra/issues"
   },
-  "homepage": "https://github.com/edycutjong/zebra#readme",
+  "homepage": "https://zebra.edycu.dev",
   "engines": {
     "node": ">=22.0.0"
   },

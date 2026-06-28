@@ -1,0 +1,6 @@
+total_payroll = "9000"
+treasury_balance = "100000"
+salaries = ["2500", "3000", "1500", "2000"]
+kyc_secret = "12345"
+path_siblings = ["1", "2", "3", "4"]
+path_bits = ["0", "1", "0", "1"]

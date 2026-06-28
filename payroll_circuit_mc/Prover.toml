@@ -1,0 +1,11 @@
+total_treasury_usd = "15000"
+total_disbursed_usd = "12200"
+total_tax_usd = "2100"
+num_currencies = "3"
+salaries_local = ["2500", "2000", "100000", "1500"]
+currency_tags = ["0", "1", "2", "0"]
+fx_rates = ["10000", "11000", "600"]
+tax_rates = ["2000", "2500", "1500", "1000"]
+kyc_secret = "12345"
+path_siblings = ["1", "2", "3", "4"]
+path_bits = ["0", "1", "0", "1"]

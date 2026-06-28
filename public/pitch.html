@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zebra · Pitch Deck</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, .font-display { font-family: 'Outfit', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .slide { display: none; animation: fade .4s ease; }
+    .slide.active { display: flex; }
+    @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    ::-webkit-scrollbar { width: 0; }
+  </style>
+</head>
+<body class="bg-[#09090b] text-zinc-100 h-full overflow-hidden flex flex-col justify-between">
+  <div class="flex-1 flex items-center justify-center p-6 md:p-10 relative overflow-y-auto">
+
+    <!-- 1 Title -->
+    <div class="slide active max-w-5xl w-full flex-col md:flex-row items-center justify-between gap-12">
+      <div class="flex-1 flex flex-col items-start text-left">
+        <span class="text-xs mono tracking-widest text-red-500 uppercase mb-4">Slide 01 // Title</span>
+        <h1 class="text-6xl md:text-7xl font-black tracking-tighter leading-none mb-6">ZEBRA <span class="text-red-500">🦓</span></h1>
+        <p class="text-2xl font-display text-zinc-200 mb-4">Hide the salaries, not the compliance.</p>
+        <p class="text-zinc-400 text-lg max-w-md">A ZK-gated payroll engine: prove every employee is KYC-verified and the total is correct — <span class="text-red-400">without revealing a salary or address on-chain</span>.</p>
+      </div>
+      <div class="flex-1 bg-zinc-900 border border-zinc-800 rounded-2xl p-8 max-w-md w-full relative">
+        <div class="absolute inset-0 bg-linear-to-br from-red-500/10 to-transparent rounded-2xl"></div>
+        <span class="text-[10px] mono text-zinc-500 block mb-3 uppercase">Soroban · UltraHonk · BN254 MSM</span>
+        <p class="text-sm mono text-zinc-300 leading-relaxed">verify_and_release(proof, signals)<br><span class="text-emerald-400">→ valid → disburse USDC ✓</span><br><span class="text-red-400">→ tampered → false ✗</span></p>
+        <p class="text-[10px] mono text-zinc-600 mt-4">Stellar Hacks: Real-World ZK · DoraHacks</p>
+      </div>
+    </div>
+
+    <!-- 2 Problem -->
+    <div class="slide max-w-5xl w-full flex-col text-left">
+      <span class="text-xs mono tracking-widest text-red-500 uppercase mb-4">Slide 02 // The Problem</span>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-8">Public ledgers turn payroll into a poaching list.</h2>
+      <div class="grid md:grid-cols-2 gap-5 max-w-4xl">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6"><p class="text-red-400 font-display font-bold mb-2">Salary exposure</p><p class="text-zinc-400 text-sm">Map the treasury wallet, read every salary. Competitors poach your senior engineers with a number in hand.</p></div>
+        <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6"><p class="text-red-400 font-display font-bold mb-2">Auditability gap</p><p class="text-zinc-400 text-sm">Prove KYC & correctness to tax authorities and VCs — but today you choose total exposure or opaque off-chain flows. No middle.</p></div>
+      </div>
+    </div>
+
+    <!-- 3 Solution -->
+    <div class="slide max-w-5xl w-full flex-col text-left">
+      <span class="text-xs mono tracking-widest text-red-500 uppercase mb-4">Slide 03 // The Solution</span>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">The first ZK-gated payroll engine on Stellar.</h2>
+      <p class="text-zinc-300 text-lg max-w-3xl mb-8">The CFO compiles a real <span class="text-red-400">Noir + UltraHonk</span> proof: every employee in the KYC set, total payroll correct — without revealing addresses or salaries.</p>
+      <div class="grid md:grid-cols-4 gap-4">
+        <div class="border-l-2 border-red-500 pl-4"><p class="font-display font-bold">🔒 Masked</p><p class="text-zinc-400 text-sm">salaries & addresses hidden</p></div>
+        <div class="border-l-2 border-red-500 pl-4"><p class="font-display font-bold">✅ KYC-gated</p><p class="text-zinc-400 text-sm">Poseidon2 Merkle membership</p></div>
+        <div class="border-l-2 border-red-500 pl-4"><p class="font-display font-bold">🧾 Disclosable</p><p class="text-zinc-400 text-sm">Secp256k1 auditor view key</p></div>
+        <div class="border-l-2 border-red-500 pl-4"><p class="font-display font-bold">💸 Atomic</p><p class="text-zinc-400 text-sm">verify_and_release escrow</p></div>
+      </div>
+    </div>
+
+    <!-- 4 Demo -->
+    <div class="slide max-w-5xl w-full flex-col text-left">
+      <span class="text-xs mono tracking-widest text-red-500 uppercase mb-4">Slide 04 // Live Demo & Flow</span>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">What the judges see</h2>
+      <div class="bg-black border border-zinc-800 rounded-xl p-6 mono text-sm leading-relaxed max-w-3xl">
+        <p class="text-zinc-500">$ npm run prove:demo</p>
+        <p class="text-zinc-300">1. CFO imports payroll CSV → names mapped, salts applied</p>
+        <p class="text-zinc-300">2. real Noir UltraHonk proof (14,592 bytes)</p>
+        <p class="text-zinc-300">   signals: [total_payroll, treasury_balance, kyc_root]</p>
+        <p class="text-zinc-300">3. submit verify_proof / verify_and_release on Soroban</p>
+        <p class="text-emerald-400">   on-chain verify_proof => true ✓</p>
+        <p class="text-red-400">   tampered             => false ✗</p>
+        <p class="text-zinc-300">4. auditor Secp256k1 view key → decrypt → audit salaries</p>
+      </div>
+      <p class="text-zinc-500 text-sm mt-4 max-w-3xl">A real on-chain UltraHonk proof. Web app = UX sandbox that simulates proving; real crypto = <span class="text-red-400 mono">prove:demo</span> + deployed contract. In-browser prover is a roadmap item.</p>
+    </div>
+
+    <!-- 5 Architecture -->
+    <div class="slide max-w-5xl w-full flex-col text-left">
+      <span class="text-xs mono tracking-widest text-red-500 uppercase mb-4">Slide 05 // Architecture & Tech</span>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">UltraHonk verification — on-chain.</h2>
+      <div class="grid md:grid-cols-2 gap-4 max-w-4xl">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-5"><p class="text-red-400 mono text-xs uppercase mb-1">ZK Circuit</p><p class="text-zinc-300 text-sm">Noir 1.0.0-beta.9 + Poseidon2 · KYC Merkle membership + payroll-sum correctness · <span class="mono">nargo test</span> passes</p></div>
+        <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-5"><p class="text-red-400 mono text-xs uppercase mb-1">Proof system</p><p class="text-zinc-300 text-sm">Barretenberg UltraHonk 0.87.0 (keccak oracle) · 14,592-byte proof · verifies off-chain + on-chain</p></div>
+        <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-5"><p class="text-red-400 mono text-xs uppercase mb-1">Verifier</p><p class="text-zinc-300 text-sm">Rust/Soroban + <span class="mono">rs-soroban-ultrahonk</span> · Protocol 26 BN254 MSM + scalar-field host fns fit the check in budget</p></div>
+        <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-5"><p class="text-red-400 mono text-xs uppercase mb-1">Settlement</p><p class="text-zinc-300 text-sm">Soroban SAC token · <span class="mono">verify_and_release</span> disburses USDC only on a valid proof</p></div>
+      </div>
+      <p class="text-zinc-500 text-sm mt-4">A pure-WASM verifier wouldn't fit the transaction budget — Zebra leans on Protocol 26 BN254 host functions. Poseidon2 lines up with Stellar's native hash family.</p>
+    </div>
+
+    <!-- 6 Market -->
+    <div class="slide max-w-5xl w-full flex-col text-left">
+      <span class="text-xs mono tracking-widest text-red-500 uppercase mb-4">Slide 06 // Market & Impact</span>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-8">Global payroll is going on-chain.</h2>
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl">
+        <div><p class="text-4xl font-black text-red-500 font-display">Fastest-growing</p><p class="text-zinc-400 text-sm mt-2">stablecoin payroll rail for remote-first & global-contractor companies.</p></div>
+        <div><p class="text-4xl font-black text-red-500 font-display">Universal pain</p><p class="text-zinc-400 text-sm mt-2">every company paying from a public treasury leaks its comp table.</p></div>
+        <div><p class="text-4xl font-black text-red-500 font-display">TAM</p><p class="text-zinc-400 text-sm mt-2">= everyone who pays salaries on-chain: startups, DAOs, contractor platforms.</p></div>
+      </div>
+    </div>
+
+    <!-- 7 Business -->
+    <div class="slide max-w-5xl w-full flex-col text-left">
+      <span class="text-xs mono tracking-widest text-red-500 uppercase mb-4">Slide 07 // Business Model</span>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-8">How Zebra survives the hackathon</h2>
+      <div class="space-y-4 max-w-3xl">
+        <div class="flex gap-4 items-start"><span class="text-red-500 font-display font-black">01</span><p class="text-zinc-300"><span class="font-bold">Per-payroll-run SaaS</span> — a fee per confidential payroll batch processed.</p></div>
+        <div class="flex gap-4 items-start"><span class="text-red-500 font-display font-black">02</span><p class="text-zinc-300"><span class="font-bold">Compliance tier</span> — auditor portal + selective-disclosure key management for regulated employers.</p></div>
+        <div class="flex gap-4 items-start"><span class="text-red-500 font-display font-black">03</span><p class="text-zinc-300"><span class="font-bold">Treasury integrations</span> — connectors for DAO tooling, contractor platforms, accounting suites.</p></div>
+        <div class="flex gap-4 items-start"><span class="text-red-500 font-display font-black">04</span><p class="text-zinc-300"><span class="font-bold">Cost moat</span> — native BN254 host fns make on-chain UltraHonk verification economical.</p></div>
+      </div>
+    </div>
+
+    <!-- 8 Competitive -->
+    <div class="slide max-w-5xl w-full flex-col text-left">
+      <span class="text-xs mono tracking-widest text-red-500 uppercase mb-4">Slide 08 // Competitive Edge</span>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">Why Zebra wins</h2>
+      <div class="overflow-x-auto max-w-4xl">
+        <table class="w-full text-sm border-collapse">
+          <thead><tr class="text-zinc-500 mono text-xs uppercase"><th class="text-left p-3"></th><th class="p-3">Public payroll</th><th class="p-3">Off-chain payroll</th><th class="p-3 text-red-400">Zebra</th></tr></thead>
+          <tbody class="text-zinc-300">
+            <tr class="border-t border-zinc-800"><td class="p-3 text-left text-zinc-400">Salaries private</td><td class="p-3 text-center">❌</td><td class="p-3 text-center">✅</td><td class="p-3 text-center">✅</td></tr>
+            <tr class="border-t border-zinc-800"><td class="p-3 text-left text-zinc-400">On-chain settlement</td><td class="p-3 text-center">✅</td><td class="p-3 text-center">❌</td><td class="p-3 text-center">✅</td></tr>
+            <tr class="border-t border-zinc-800"><td class="p-3 text-left text-zinc-400">KYC-provable</td><td class="p-3 text-center">⚠️</td><td class="p-3 text-center">⚠️ trust us</td><td class="p-3 text-center text-red-400">✅ ZK Merkle</td></tr>
+            <tr class="border-t border-zinc-800"><td class="p-3 text-left text-zinc-400">Auditable</td><td class="p-3 text-center">too much</td><td class="p-3 text-center">❌ opaque</td><td class="p-3 text-center text-red-400">✅ view key</td></tr>
+            <tr class="border-t border-zinc-800"><td class="p-3 text-left text-zinc-400">Cost</td><td class="p-3 text-center">gas</td><td class="p-3 text-center">bank fees</td><td class="p-3 text-center">sub-cent</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-zinc-500 text-sm mt-4">Only Zebra is confidential <em>and</em> provably compliant at the same time.</p>
+    </div>
+
+    <!-- 9 Traction -->
+    <div class="slide max-w-5xl w-full flex-col text-left">
+      <span class="text-xs mono tracking-widest text-red-500 uppercase mb-4">Slide 09 // Traction & Validation</span>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-8">Built & verified, not vaporware</h2>
+      <div class="grid md:grid-cols-2 gap-4 max-w-4xl">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-5"><p class="text-emerald-400 font-display font-bold mb-1">✅ Verifies on testnet</p><p class="text-zinc-400 text-sm">Real Noir UltraHonk proof accepted on-chain — <span class="mono text-red-400">npm run prove:demo</span>.</p></div>
+        <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-5"><p class="text-emerald-400 font-display font-bold mb-1">✅ Negative control</p><p class="text-zinc-400 text-sm">Tampered inputs return false on-chain.</p></div>
+        <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-5"><p class="text-emerald-400 font-display font-bold mb-1">✅ Real toolchain</p><p class="text-zinc-400 text-sm">Noir 1.0.0-beta.9 + bb 0.87.0; rebuilt the circuit that was the source of earlier mock proofs.</p></div>
+        <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-5"><p class="text-emerald-400 font-display font-bold mb-1">✅ Full flow tested</p><p class="text-zinc-400 text-sm">cargo test (escrow/auditor + duplicate-nullifier), 107-test harness, Playwright E2E.</p></div>
+      </div>
+    </div>
+
+    <!-- 10 Roadmap -->
+    <div class="slide max-w-5xl w-full flex-col text-left">
+      <span class="text-xs mono tracking-widest text-red-500 uppercase mb-4">Slide 10 // Roadmap</span>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-8">30 / 60 / 90 days</h2>
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl">
+        <div class="border-t-2 border-red-500 pt-4"><p class="mono text-red-400 text-sm mb-2">30 DAYS</p><p class="text-zinc-300 text-sm">In-browser bb.js proving; stellar.expert verified; live confidential payroll demo.</p></div>
+        <div class="border-t-2 border-zinc-700 pt-4"><p class="mono text-zinc-400 text-sm mb-2">60 DAYS</p><p class="text-zinc-300 text-sm">Sindri decentralized prover for larger batches; scheduled/recurring payroll.</p></div>
+        <div class="border-t-2 border-zinc-700 pt-4"><p class="mono text-zinc-400 text-sm mb-2">90 DAYS</p><p class="text-zinc-300 text-sm">Multi-currency payroll, accounting/DAO connectors, first design-partner company.</p></div>
+      </div>
+    </div>
+
+    <!-- 11 Team -->
+    <div class="slide max-w-5xl w-full flex-col text-left">
+      <span class="text-xs mono tracking-widest text-red-500 uppercase mb-4">Slide 11 // Team</span>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">Engineering leverage</h2>
+      <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 max-w-3xl">
+        <p class="text-2xl font-display font-bold mb-2">Edy Cu</p>
+        <p class="text-red-400 mono text-sm mb-4">full-stack + applied-ZK engineer</p>
+        <p class="text-zinc-300">Solo-built the Noir/UltraHonk payroll circuit (Poseidon2 KYC membership + sum correctness), the Rust/Soroban verifier + escrow embedding <span class="mono">rs-soroban-ultrahonk</span>, the ECIES auditor view-key flow, and the Next.js CFO/Auditor portals. One of <span class="text-red-400">five</span> real on-chain ZK products shipped for this hackathon.</p>
+      </div>
+    </div>
+
+    <!-- 12 Ask -->
+    <div class="slide max-w-4xl w-full flex-col items-center text-center">
+      <span class="text-xs mono tracking-widest text-red-500 uppercase mb-6">Slide 12 // The Ask</span>
+      <h2 class="text-5xl md:text-6xl font-black tracking-tighter mb-6">Hide the salaries.<br><span class="text-red-500">Prove the compliance.</span></h2>
+      <p class="text-zinc-300 text-lg max-w-2xl mb-8">Zebra is the confidentiality layer that makes on-chain payroll adoptable — private to competitors, transparent to auditors, settled on Stellar.</p>
+      <div class="mb-8 bg-black border border-zinc-800 rounded-xl px-6 py-4 mono text-sm text-red-400">npm run prove:demo &nbsp;<span class="text-zinc-500"># a real UltraHonk proof, verified on Stellar</span></div>
+
+      <div class="flex flex-wrap justify-center gap-4 text-xs font-display font-bold">
+        <a href="https://github.com/edycutjong/zebra" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-zinc-900 border border-zinc-800 hover:border-red-500 rounded-xl text-zinc-300 hover:text-white transition-all">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://zebra.edycu.dev" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-zinc-900 border border-zinc-800 hover:border-red-500 rounded-xl text-zinc-300 hover:text-white transition-all">
+          🚀 Live Demo
+        </a>
+        <a href="https://youtu.be/placeholder" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-zinc-900 border border-zinc-800 hover:border-red-500 rounded-xl text-zinc-300 hover:text-white transition-all">
+          🎬 Demo Video
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="h-16 border-t border-zinc-900 bg-[#09090b]/80 backdrop-blur-lg flex items-center justify-between px-6 md:px-8 z-10 shrink-0">
+    <div class="text-[10px] mono text-zinc-600 uppercase">Zebra · Stellar Testnet · Confidential Payroll</div>
+    <div class="flex items-center gap-4">
+      <button onclick="prevSlide()" class="px-4 py-1.5 border border-zinc-800 hover:border-red-500 rounded-lg text-xs mono text-zinc-400 hover:text-red-400 transition-all select-none">PREV</button>
+      <span id="slide-num" class="text-xs mono text-red-400">1 / 12</span>
+      <button onclick="nextSlide()" class="px-4 py-1.5 border border-zinc-800 hover:border-red-500 rounded-lg text-xs mono text-zinc-400 hover:text-red-400 transition-all select-none">NEXT</button>
+    </div>
+  </footer>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const slideNum = document.getElementById('slide-num');
+    function updateSlides() {
+      slides.forEach((s, i) => s.classList.toggle('active', i === currentSlide));
+      slideNum.textContent = `${currentSlide + 1} / ${slides.length}`;
+    }
+    function prevSlide() { if (currentSlide > 0) { currentSlide--; updateSlides(); } }
+    function nextSlide() { if (currentSlide < slides.length - 1) { currentSlide++; updateSlides(); } }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') prevSlide();
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') nextSlide();
+    });
+  </script>
+</body>
+</html>

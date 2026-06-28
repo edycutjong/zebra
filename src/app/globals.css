@@ -1,0 +1,160 @@
+@import "tailwindcss";
+@import "../../docs/assets/_tokens.css";
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-primary-glow: var(--primary-glow);
+  --color-accent-glow: var(--accent-glow);
+  --color-bg-base: var(--bg-base);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-overlay: var(--bg-overlay);
+  --color-text-hi: var(--text-hi);
+  --color-text-mid: var(--text-mid);
+  --color-text-low: var(--text-low);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-ui);
+  --font-mono: var(--font-mono);
+
+  --radius-sm: var(--radius-8);
+  --radius-md: var(--radius-16);
+  --radius-lg: var(--radius-24);
+  --radius-xl: var(--radius-32);
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-hi);
+  font-family: var(--font-ui);
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom visual utilities */
+.mesh-bg {
+  background-image: var(--gradient-mesh);
+}
+
+.grid-overlay {
+  background-image: var(--grid-bg);
+}
+
+.noise-overlay {
+  background-image: var(--noise-svg);
+  mix-blend-mode: overlay;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.glass-panel {
+  backdrop-filter: var(--blur-glass);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+}
+
+.text-gradient {
+  background: var(--gradient-hero);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* ─── ZEBRA Signature: Stripe Pattern Morph + Vault Lock ─── */
+.zebra-stripes {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 80px,
+    rgba(6, 182, 212, 0.015) 80px,
+    rgba(6, 182, 212, 0.015) 82px
+  );
+  animation: zebra-shift 20s linear infinite;
+}
+
+@keyframes zebra-shift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 164px 164px;
+  }
+}
+
+/* Vault concentric rings */
+.zebra-vault {
+  position: fixed;
+  bottom: -200px;
+  left: -200px;
+  width: 600px;
+  height: 600px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.zebra-vault::before,
+.zebra-vault::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(6, 182, 212, 0.04);
+}
+
+.zebra-vault::before {
+  width: 300px;
+  height: 300px;
+  animation: zebra-lock 12s ease-in-out infinite;
+}
+
+.zebra-vault::after {
+  width: 200px;
+  height: 200px;
+  animation: zebra-lock 12s ease-in-out infinite reverse;
+}
+
+@keyframes zebra-lock {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+    border-color: rgba(6, 182, 212, 0.04);
+  }
+  50% {
+    border-color: rgba(6, 182, 212, 0.08);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+    border-color: rgba(6, 182, 212, 0.04);
+  }
+}
+
+/* Security verification scan */
+.zebra-scan {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(6, 182, 212, 0.02),
+    transparent
+  );
+  animation: zebra-verify 6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes zebra-verify {
+  0% {
+    top: -60px;
+  }
+  100% {
+    top: calc(100vh + 60px);
+  }
+}

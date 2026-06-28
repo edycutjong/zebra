@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#042f2e"/>
+      <stop offset="60%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#02040a"/>
+    </radialGradient>
+    
+    <!-- Lock metal gradient -->
+    <linearGradient id="lockBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="40%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <!-- Glowing cyan neon gradient -->
+    <linearGradient id="neonCyan" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+
+    <linearGradient id="laserGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Advanced Glow Filters for realistic bloom -->
+    <filter id="epicGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="15" result="blur1"/>
+      <feGaussianBlur stdDeviation="6" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes rotateHUD {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes rotateHUDRev {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-360deg); }
+    }
+
+    @keyframes scan {
+      0% { transform: translateY(0px); opacity: 0; }
+      15% { opacity: 1; }
+      85% { opacity: 1; }
+      100% { transform: translateY(240px); opacity: 0; }
+    }
+
+    @keyframes pulseGlow {
+      0% { opacity: 0.2; }
+      50% { opacity: 0.5; }
+      100% { opacity: 0.2; }
+    }
+
+    @keyframes particleFlow {
+      0% { transform: translateY(60px) scale(0); opacity: 0; }
+      50% { opacity: 0.8; }
+      100% { transform: translateY(-120px) scale(1.2); opacity: 0; }
+    }
+
+    .floater {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hud-ring-1 {
+      animation: rotateHUD 25s linear infinite;
+      transform-origin: 256px 256px;
+    }
+
+    .hud-ring-2 {
+      animation: rotateHUDRev 15s linear infinite;
+      transform-origin: 256px 256px;
+    }
+
+    .scanner {
+      animation: scan 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    .ambient-glow {
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+
+    .particle-1 { animation: particleFlow 4s linear infinite; }
+    .particle-2 { animation: particleFlow 4s linear infinite; animation-delay: 1.3s; }
+    .particle-3 { animation: particleFlow 4s linear infinite; animation-delay: 2.6s; }
+  </style>
+
+  <!-- Base Cyber Background -->
+  <rect width="512" height="512" rx="90" fill="url(#bgGrad)"/>
+  
+  <!-- Outer Cyber Border -->
+  <rect width="504" height="504" x="4" y="4" rx="86" fill="none" stroke="#1e293b" stroke-width="3"/>
+  <rect width="504" height="504" x="4" y="4" rx="86" fill="none" stroke="#06b6d4" stroke-width="1.5" stroke-opacity="0.4" filter="url(#epicGlow)"/>
+
+  <!-- Ambient Light Pulse -->
+  <circle cx="256" cy="256" r="180" fill="#06b6d4" opacity="0.3" filter="url(#epicGlow)" class="ambient-glow"/>
+
+  <!-- HUD Rotator 1 (Outer target) -->
+  <g class="hud-ring-1" opacity="0.25">
+    <circle cx="256" cy="256" r="220" fill="none" stroke="#06b6d4" stroke-width="2" stroke-dasharray="100 40 20 40 80 50"/>
+    <circle cx="256" cy="256" r="200" fill="none" stroke="#22d3ee" stroke-width="1" stroke-dasharray="10 15 30 10"/>
+    <path d="M 256,16 L 256,36 M 256,476 L 256,496 M 16,256 L 36,256 M 476,256 L 496,256" stroke="#06b6d4" stroke-width="3"/>
+  </g>
+
+  <!-- HUD Rotator 2 (Inner tech) -->
+  <g class="hud-ring-2" opacity="0.3">
+    <circle cx="256" cy="256" r="170" fill="none" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="50 150 10 30"/>
+    <circle cx="256" cy="256" r="160" fill="none" stroke="#22d3ee" stroke-width="2" stroke-dasharray="5 10 20 40"/>
+  </g>
+
+  <!-- Floating Main Composition -->
+  <g class="floater">
+    <!-- Abstract Zebra Stripe Shield in Background -->
+    <g opacity="0.15">
+      <path d="M156,140 Q256,100 356,140 L356,280 Q256,400 156,280 Z" fill="#ffffff"/>
+      <!-- Stripes -->
+      <path d="M170,170 L250,210 L330,170" fill="none" stroke="#0f172a" stroke-width="22" stroke-linecap="round"/>
+      <path d="M170,230 L250,270 L330,230" fill="none" stroke="#0f172a" stroke-width="22" stroke-linecap="round"/>
+      <path d="M185,290 L250,320 L315,290" fill="none" stroke="#0f172a" stroke-width="22" stroke-linecap="round"/>
+    </g>
+
+    <!-- Padlock Shackle -->
+    <path d="M186,220 L186,150 A70,70 0 0,1 326,150 L326,220" fill="none" stroke="url(#neonCyan)" stroke-width="28" stroke-linecap="round" filter="url(#epicGlow)"/>
+    <path d="M186,220 L186,150 A70,70 0 0,1 326,150 L326,220" fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round"/>
+
+    <!-- Lock Body -->
+    <rect x="146" y="200" width="220" height="170" rx="30" fill="url(#lockBody)" stroke="#06b6d4" stroke-width="8" stroke-linejoin="round" filter="url(#epicGlow)"/>
+    <rect x="146" y="200" width="220" height="170" rx="30" fill="url(#lockBody)" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round"/>
+
+    <!-- Inside lock body: Zebra stripe pattern inside lock body -->
+    <g clip-path="url(#bodyClip)">
+      <path d="M140,230 L380,270 M140,280 L380,320 M140,330 L380,370" fill="none" stroke="#06b6d4" stroke-width="15" opacity="0.3" stroke-linecap="round"/>
+    </g>
+
+    <!-- Glowing Keyhole -->
+    <g filter="url(#epicGlow)">
+      <circle cx="256" cy="270" r="22" fill="#22d3ee"/>
+      <polygon points="246,285 266,285 272,325 240,325" fill="#22d3ee"/>
+    </g>
+    <circle cx="256" cy="270" r="10" fill="#0f172a"/>
+    <polygon points="251,280 261,280 264,315 248,315" fill="#0f172a"/>
+
+
+
+    <!-- Upward floating secure payroll data particles -->
+    <g transform="translate(256, 270)">
+      <circle cx="-60" cy="0" r="5" fill="#22d3ee" filter="url(#epicGlow)" class="particle-1"/>
+      <circle cx="60" cy="-20" r="6" fill="#ffffff" filter="url(#epicGlow)" class="particle-2"/>
+      <circle cx="0" cy="40" r="4.5" fill="#06b6d4" filter="url(#epicGlow)" class="particle-3"/>
+    </g>
+  </g>
+
+  <!-- Clip-paths used for sweeps -->
+  <clipPath id="bodyClip">
+    <rect x="150" y="204" width="212" height="162" rx="26"/>
+  </clipPath>
+  <clipPath id="bodyClipSweep">
+    <rect x="146" y="200" width="220" height="170" rx="30"/>
+  </clipPath>
+</svg>

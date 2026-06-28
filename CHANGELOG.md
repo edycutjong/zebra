@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.1](../../compare/v1.1.0...v1.1.1) (2026-06-28)
+
+### 🐛 Bug Fixes
+
+- **css:** inline design tokens directly into globals.css and delete _tokens.css (1fc0fe2)
+
 ## [1.1.0](../../compare/HEAD~50...v1.1.0) (2026-06-28)
 
 ### 🚀 Features

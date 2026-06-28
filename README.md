@@ -263,6 +263,12 @@ run `npm run prove:demo` against the deployed contract on testnet.
 - [x] Phase 6: Multi-currency payroll with cross-jurisdiction tax withholding (v3) — **shipped & verified on-chain.** Real `payroll_circuit_mc` Noir circuit (private FX conversion + per-employee tax withholding + Poseidon2 KYC membership) → UltraHonk proof → on-chain `verify_mc_proof` / `release_payroll_v3` against a dedicated multi-currency VK on testnet contract `CBXJ75PDFAMMGL2VHEXBJX2UT3GSWPHEZZULOFZWUZLN57V6UUBOL6NB`. Reproduce: `npm run prove:demo:mc` (real proof verifies → `true`, tampered inputs → `false`). Covered by contract unit tests `test_release_payroll_v3_*`.
 - [ ] Phase 7: Hosted/decentralized prover network (e.g. Sindri) scaling for larger employee batches — _blocked on external infra: requires a third-party proving account + API key, which is not available in this environment. The proving pipeline (`prove:demo:mc`) is the integration point; plugging a remote prover in is a credentialed config change, not new protocol work. Not deployed — left honest rather than stubbed._
 
+## 📽️ Demo Materials
+
+- **GitHub Repository**: [https://github.com/edycutjong/zebra](https://github.com/edycutjong/zebra)
+- **Live App URL**: [https://zebra.edycu.dev](https://zebra.edycu.dev)
+- **Pitch Deck**: [https://zebra.edycu.dev/pitch.html](https://zebra.edycu.dev/pitch.html)
+
 ---
 
 ## 📄 License

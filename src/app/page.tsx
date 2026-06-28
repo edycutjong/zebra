@@ -425,6 +425,22 @@ export default function Home() {
             >
               [ AUDITOR CONSOLE ]
             </button>
+            <a
+              href="https://github.com/edycutjong/zebra"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-sm tracking-wide text-slate-400 hover:text-white transition flex items-center"
+            >
+              [ GITHUB ]
+            </a>
+            <a
+              href="/pitch.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-sm tracking-wide text-slate-400 hover:text-white transition flex items-center"
+            >
+              [ PITCH DECK ]
+            </a>
           </nav>
 
           <div className="flex items-center gap-3">
@@ -465,13 +481,29 @@ export default function Home() {
               addresses or salary levels on a public block explorer.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 mb-16">
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 mb-16">
               <button
                 onClick={() => setCurrentView("cfo")}
                 className="font-mono bg-cyan-500 text-slate-950 font-bold px-8 py-4 rounded-lg hover:bg-cyan-400 transition shadow-[0_0_20px_rgba(6,182,212,0.4)]"
               >
                 LAUNCH CFO DASHBOARD
               </button>
+              <a
+                href="/pitch.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 px-8 py-4 rounded-lg hover:bg-cyan-500/20 transition flex items-center justify-center font-bold text-sm"
+              >
+                VIEW PITCH DECK
+              </a>
+              <a
+                href="https://github.com/edycutjong/zebra"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 px-8 py-4 rounded-lg hover:bg-emerald-500/20 transition flex items-center justify-center font-bold text-sm"
+              >
+                GITHUB REPO
+              </a>
               <button
                 onClick={() => setCurrentView("auditor")}
                 className="font-mono border border-slate-700 bg-slate-900/50 text-white px-8 py-4 rounded-lg hover:bg-slate-800 transition"

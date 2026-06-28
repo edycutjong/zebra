@@ -13,21 +13,22 @@ This directory contains the Zero-Knowledge payroll sum and compliance circuit bu
 ## Proving Constraints
 
 The circuit enforces three distinct cryptographic constraints:
+
 1. **Sum Correctness:** Proves that the private employee salaries sum exactly to the publicly disclosed total payroll amount.
 2. **Solvency:** Asserts that the total payroll amount does not exceed the public treasury balance (`total_payroll <= treasury_balance`).
 3. **KYC Membership:** Computes a Poseidon2 leaf commitment of the user's KYC secret and total payroll, traverses a Merkle path using path siblings/bits, and returns the computed `kyc_root` as a public output. The smart contract validates this root against the active compliance registry.
 
 ## Signal Map
 
-| Parameter | Type | Visibility | Description |
-|---|---|---|---|
-| `total_payroll` | `Field` | **Public** | Sum total of all salaries in minor stablecoin units |
-| `treasury_balance` | `Field` | **Public** | Target treasury account balance |
-| `kyc_root` | `Field` (Return) | **Public** | Resulting Poseidon2 Merkle root of the compliance list |
-| `salaries` | `[Field; 4]` | **Private** | Array of individual employee salary figures |
-| `kyc_secret` | `Field` | **Private** | Secret entropy verifying employee compliance |
-| `path_siblings` | `[Field; 4]` | **Private** | Merkle tree sibling hashes |
-| `path_bits` | `[Field; 4]` | **Private** | Merkle tree routing bits (0 for left, 1 for right) |
+| Parameter          | Type             | Visibility  | Description                                            |
+| ------------------ | ---------------- | ----------- | ------------------------------------------------------ |
+| `total_payroll`    | `Field`          | **Public**  | Sum total of all salaries in minor stablecoin units    |
+| `treasury_balance` | `Field`          | **Public**  | Target treasury account balance                        |
+| `kyc_root`         | `Field` (Return) | **Public**  | Resulting Poseidon2 Merkle root of the compliance list |
+| `salaries`         | `[Field; 4]`     | **Private** | Array of individual employee salary figures            |
+| `kyc_secret`       | `Field`          | **Private** | Secret entropy verifying employee compliance           |
+| `path_siblings`    | `[Field; 4]`     | **Private** | Merkle tree sibling hashes                             |
+| `path_bits`        | `[Field; 4]`     | **Private** | Merkle tree routing bits (0 for left, 1 for right)     |
 
 ## Development Commands
 
@@ -45,6 +46,7 @@ nargo codegen-verifier
 ```
 
 To run a full proving run, execute the following script from the project root:
+
 ```bash
 npm run prove:demo
 ```

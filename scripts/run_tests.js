@@ -1,8 +1,8 @@
 // Mock @supabase/supabase-js in require cache to run without network/real keys
-require.cache[require.resolve('@supabase/supabase-js')] = {
+require.cache[require.resolve("@supabase/supabase-js")] = {
   exports: {
-    createClient: () => ({})
-  }
+    createClient: () => ({}),
+  },
 };
 
 const {
@@ -196,52 +196,72 @@ test("CSV Parser: Rejects incomplete rows in CSV", () => {
 });
 
 test("CSV Parser: Rejects missing Name in row", () => {
-  const csv = "Name,ID,Address,Salary,Salt,KYCStatus\n,101,GB3ZZEBRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5000,82948294,Active";
+  const csv =
+    "Name,ID,Address,Salary,Salt,KYCStatus\n,101,GB3ZZEBRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5000,82948294,Active";
   try {
     parsePayrollCsv(csv);
     assert(false, "Should throw on missing Name");
   } catch (err) {
-    assert(err.message.includes("missing Name"), "Error should mention missing Name");
+    assert(
+      err.message.includes("missing Name"),
+      "Error should mention missing Name",
+    );
   }
 });
 
 test("CSV Parser: Rejects missing ID in row", () => {
-  const csv = "Name,ID,Address,Salary,Salt,KYCStatus\nAlice,,GB3ZZEBRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5000,82948294,Active";
+  const csv =
+    "Name,ID,Address,Salary,Salt,KYCStatus\nAlice,,GB3ZZEBRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5000,82948294,Active";
   try {
     parsePayrollCsv(csv);
     assert(false, "Should throw on missing ID");
   } catch (err) {
-    assert(err.message.includes("missing ID"), "Error should mention missing ID");
+    assert(
+      err.message.includes("missing ID"),
+      "Error should mention missing ID",
+    );
   }
 });
 
 test("CSV Parser: Rejects missing Address in row", () => {
-  const csv = "Name,ID,Address,Salary,Salt,KYCStatus\nAlice,101,,5000,82948294,Active";
+  const csv =
+    "Name,ID,Address,Salary,Salt,KYCStatus\nAlice,101,,5000,82948294,Active";
   try {
     parsePayrollCsv(csv);
     assert(false, "Should throw on missing Address");
   } catch (err) {
-    assert(err.message.includes("missing Address"), "Error should mention missing Address");
+    assert(
+      err.message.includes("missing Address"),
+      "Error should mention missing Address",
+    );
   }
 });
 
 test("CSV Parser: Rejects missing Salt in row", () => {
-  const csv = "Name,ID,Address,Salary,Salt,KYCStatus\nAlice,101,GB3ZZEBRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5000,,Active";
+  const csv =
+    "Name,ID,Address,Salary,Salt,KYCStatus\nAlice,101,GB3ZZEBRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5000,,Active";
   try {
     parsePayrollCsv(csv);
     assert(false, "Should throw on missing Salt");
   } catch (err) {
-    assert(err.message.includes("missing Salt"), "Error should mention missing Salt");
+    assert(
+      err.message.includes("missing Salt"),
+      "Error should mention missing Salt",
+    );
   }
 });
 
 test("CSV Parser: Rejects missing KYCStatus in row", () => {
-  const csv = "Name,ID,Address,Salary,Salt,KYCStatus\nAlice,101,GB3ZZEBRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5000,82948294,";
+  const csv =
+    "Name,ID,Address,Salary,Salt,KYCStatus\nAlice,101,GB3ZZEBRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5000,82948294,";
   try {
     parsePayrollCsv(csv);
     assert(false, "Should throw on missing KYCStatus");
   } catch (err) {
-    assert(err.message.includes("missing KYCStatus"), "Error should mention missing KYCStatus");
+    assert(
+      err.message.includes("missing KYCStatus"),
+      "Error should mention missing KYCStatus",
+    );
   }
 });
 

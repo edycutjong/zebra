@@ -396,26 +396,11 @@ export default function Home() {
             className="flex items-center gap-3 cursor-pointer"
             onClick={() => setCurrentView("landing")}
           >
-            <svg
-              viewBox="0 0 512 512"
-              className="w-8 h-8 filter drop-shadow(0 0 8px rgba(0, 240, 255, 0.4))"
-            >
-              <polygon
-                points="256,60 416,140 416,330 256,450 96,330 96,140"
-                fill="none"
-                stroke="#00F0FF"
-                strokeWidth="32"
-              />
-              <line
-                x1="150"
-                y1="230"
-                x2="362"
-                y2="230"
-                stroke="#00FF66"
-                strokeWidth="48"
-                strokeLinecap="round"
-              />
-            </svg>
+            <img
+              src="/icon.svg"
+              className="w-8 h-8 filter drop-shadow-[0_0_8px_rgba(0,240,255,0.4)]"
+              alt="Zebra Logo"
+            />
             <span className="font-display font-bold text-xl tracking-wider text-white">
               ZEBRA
             </span>

@@ -124,7 +124,7 @@ npm run prove:demo
 #   on-chain verify_proof (tampered) => false   (negative control)
 ```
 
-- **Verifier contract (testnet):** `CCLTVNPYS5H2AY4OTYIYDU57XYO4S5OZQE435ZZX2TFUVYDAIS6B53N5`
+- **Verifier contract (testnet):** [`CCLTVNPY…AIS6B53N5`](https://stellar.expert/explorer/testnet/contract/CCLTVNPYS5H2AY4OTYIYDU57XYO4S5OZQE435ZZX2TFUVYDAIS6B53N5)
 - **Public signals:** `[ total_payroll, treasury_balance, kyc_root ]`
 - **Toolchain:** Noir `1.0.0-beta.9` + Barretenberg `0.87.0`
 - **Compiler Requirements:** Target `wasm32v1-none` (using `cargo build --target wasm32v1-none` or through Soroban compile tools) under Rust 1.82+ to support native BN254 host functions.

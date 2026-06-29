@@ -42,6 +42,14 @@ Remote-first startups pay their team in stablecoins to avoid banking friction. H
   <img src="public/og-image.png" alt="Zebra CFO & Auditor Dashboards" width="100%">
 </div>
 
+<div align="center">
+  <img src="docs/screenshots/02-cfo-portal-load.png" alt="Zebra — CFO payroll portal" width="32%">
+  <img src="docs/screenshots/05-compile-zk-proof.png" alt="Zebra — compile the payroll ZK proof" width="32%">
+  <img src="docs/screenshots/10-decrypt-payroll.png" alt="Zebra — auditor decrypts payroll with the view key" width="32%">
+  <br/>
+  <sub><em>CFO payroll, ZK proof compilation &amp; auditor disclosure (demo sandbox). Reproduce the real proof with <code>npm run prove:demo</code>.</em></sub>
+</div>
+
 > **The Confidential Payout Flow:**
 >
 > 1. **CFO Imports Payroll CSV** $\rightarrow$ Individual records are read, employee names are mapped, and salts are applied.

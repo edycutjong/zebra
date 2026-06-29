@@ -8,9 +8,8 @@
 
 [![Live Demo](https://img.shields.io/badge/🚀_Live-Demo-06b6d4?style=for-the-badge)](https://zebra.edycu.dev)
 [![Pitch Deck](https://img.shields.io/badge/📊_Pitch-Deck-f59e0b?style=for-the-badge)](https://zebra.edycu.dev/pitch.html)
-[![Demo Video](https://img.shields.io/badge/🎬_Demo-Video-ef4444?style=for-the-badge)](https://youtu.be/placeholder)
-[![Platform](https://img.shields.io/badge/Platform-DoraHacks-8b5cf6?style=for-the-badge)](https://dorahacks.io/hackathon/stellar-hacks-zk)
-[![Built for Stellar ZK](https://img.shields.io/badge/Built_For-Stellar_ZK_Hacks-000000?style=for-the-badge&logo=stellar&logoColor=white)](https://stellar.org)
+[![Demo Video](https://img.shields.io/badge/🎬_Demo-Video-ef4444?style=for-the-badge)](https://youtu.be/KatlfYRjvw8)
+[![Platform](https://img.shields.io/badge/DoraHacks-Stellar_Hacks:_Real_World_ZK-8b5cf6?style=for-the-badge)](https://dorahacks.io/hackathon/stellar-hacks-zk)
 
   <br/>
 

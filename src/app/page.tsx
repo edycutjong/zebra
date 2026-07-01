@@ -156,6 +156,13 @@ export default function Home() {
     }, 600);
   };
 
+  const disconnectWallet = () => {
+    setWalletConnected(false);
+    setWalletAddress("");
+    setSandboxMode(true);
+    setProvingStep("");
+  };
+
   // CSV Drag and Drop parser
   const handleCsvUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -463,9 +470,18 @@ export default function Home() {
 
           <div className="flex items-center gap-3">
             {walletConnected ? (
-              <span className="font-mono text-xs bg-cyan-950/50 border border-cyan-800/80 text-cyan-400 px-3 py-1.5 rounded-full">
-                {walletAddress}
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="font-mono text-xs bg-cyan-950/50 border border-cyan-800/80 text-cyan-400 px-3 py-1.5 rounded-full">
+                  {walletAddress}
+                </span>
+                <button
+                  onClick={disconnectWallet}
+                  title="Disconnect wallet"
+                  className="font-mono text-xs bg-slate-900 border border-slate-700 text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-slate-800 transition"
+                >
+                  DISCONNECT
+                </button>
+              </div>
             ) : (
               <div className="flex items-center gap-2">
                 <button

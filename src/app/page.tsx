@@ -110,37 +110,50 @@ export default function Home() {
   const connectWallet = async () => {
     setProvingStep("[Freighter] Connecting to Freighter Wallet...");
     try {
-      const win = window as unknown as Record<string, Record<string, unknown>>;
-      const freighterDetected =
-        typeof window !== "undefined" && (win.stellarWebKit || win.stellar);
-      if (!freighterDetected) {
+      const { isConnected, requestAccess } =
+        await import("@stellar/freighter-api");
+
+      const connection = await isConnected();
+      if (!connection.isConnected) {
         setProvingStep(
-          "[Freighter] Wallet extension not detected. Initializing Demo Mode...",
+          "[Freighter] Extension not detected. Install Freighter, or use the Demo button to explore the sandbox.",
         );
-        setTimeout(() => {
-          setWalletConnected(true);
-          setWalletAddress("GB3Z...ZEBRA");
-          setProvingStep("");
-        }, 1200);
         return;
       }
 
-      const pubKey = await (
-        window as unknown as {
-          stellar: { getPublicKey: () => Promise<string> };
-        }
-      ).stellar.getPublicKey();
-      if (pubKey) {
-        setWalletConnected(true);
-        setWalletAddress(pubKey);
-        setSandboxMode(false);
-        setProvingStep("");
+      const access = await requestAccess();
+      if (access.error) {
+        setProvingStep(
+          `[Freighter] Access denied or cancelled: ${JSON.stringify(access.error)}`,
+        );
+        return;
       }
+      if (!access.address) {
+        setProvingStep("[Freighter] No account returned by the wallet.");
+        return;
+      }
+
+      setWalletConnected(true);
+      setWalletAddress(access.address);
+      setSandboxMode(false);
+      setProvingStep("");
     } catch (err: unknown) {
       console.error("Wallet connection failed:", err);
       const errMsg = err instanceof Error ? err.message : String(err);
       setProvingStep(`[ERROR] Connection failed: ${errMsg}`);
     }
+  };
+
+  // Predefined demo identity — no wallet extension required. Stays in sandbox
+  // mode so nothing is broadcast; purely for exploring the console UI.
+  const connectDemoWallet = () => {
+    setProvingStep("[Sandbox] Loading predefined demo identity...");
+    setTimeout(() => {
+      setWalletConnected(true);
+      setWalletAddress("GB3Z...ZEBRA");
+      setSandboxMode(true);
+      setProvingStep("");
+    }, 600);
   };
 
   // CSV Drag and Drop parser
@@ -272,22 +285,27 @@ export default function Home() {
         const xdrTx = tx.toXDR();
 
         setProvingStep("[Freighter] Requesting wallet signature...");
-        const signedTx = await (
-          window as unknown as {
-            stellar: {
-              signTransaction: (
-                xdr: string,
-                opts: { networkPassphrase: string },
-              ) => Promise<string>;
-            };
-          }
-        ).stellar.signTransaction(xdrTx, {
+        const { isConnected, signTransaction } =
+          await import("@stellar/freighter-api");
+        const connection = await isConnected();
+        if (!connection.isConnected) {
+          throw new Error(
+            "Freighter wallet not detected. Install the Freighter browser extension (or use Sandbox mode) to execute on Testnet.",
+          );
+        }
+        const signResult = await signTransaction(xdrTx, {
           networkPassphrase: Networks.TESTNET,
+          address: walletAddress,
         });
+        if (signResult.error) {
+          throw new Error(
+            `Freighter signing failed: ${JSON.stringify(signResult.error)}`,
+          );
+        }
 
         setProvingStep("[Stellar] Submitting transaction to Soroban RPC...");
         const signedTxObj = TransactionBuilder.fromXDR(
-          signedTx,
+          signResult.signedTxXdr,
           Networks.TESTNET,
         );
         const sendResponse = await server.sendTransaction(signedTxObj);
@@ -449,12 +467,21 @@ export default function Home() {
                 {walletAddress}
               </span>
             ) : (
-              <button
-                onClick={connectWallet}
-                className="font-mono text-xs bg-slate-900 border border-slate-700 text-white px-4 py-2 rounded-full hover:bg-slate-800 transition"
-              >
-                CONNECT FREIGHTER
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={connectWallet}
+                  className="font-mono text-xs bg-slate-900 border border-slate-700 text-white px-4 py-2 rounded-full hover:bg-slate-800 transition"
+                >
+                  CONNECT FREIGHTER
+                </button>
+                <button
+                  onClick={connectDemoWallet}
+                  title="Load a predefined demo identity — no wallet extension required"
+                  className="font-mono text-xs bg-amber-500/10 border border-amber-500/30 text-amber-300 px-3 py-2 rounded-full hover:bg-amber-500/20 transition"
+                >
+                  DEMO
+                </button>
+              </div>
             )}
           </div>
         </div>

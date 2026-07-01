@@ -11,10 +11,14 @@ test.describe("Zebra Core Payroll Flow", () => {
     await page.getByRole("button", { name: "[ CFO PORTAL ]" }).click();
     await expect(page.getByText("CFO PAYROLL DISBURSEMENT")).toBeVisible();
 
-    // 3. Connect Freighter Wallet simulation
+    // 3. Load the demo identity (real Freighter connect needs the browser
+    //    extension, which isn't available in CI — the Demo button loads a
+    //    predefined sandbox identity instead).
     const connectBtn = page.getByRole("button", { name: /CONNECT FREIGHTER/i });
     await expect(connectBtn).toBeVisible();
-    await connectBtn.click();
+    const demoBtn = page.getByRole("button", { name: /^DEMO$/i });
+    await expect(demoBtn).toBeVisible();
+    await demoBtn.click();
     await expect(page.getByText("GB3Z...ZEBRA")).toBeVisible();
 
     // 4. Load mock CSV data

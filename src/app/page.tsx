@@ -429,7 +429,7 @@ export default function Home() {
               href="https://github.com/edycutjong/zebra"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-sm tracking-wide text-slate-400 hover:text-white transition flex items-center"
+              className="hidden md:flex font-mono text-sm tracking-wide text-slate-400 hover:text-white transition items-center"
             >
               [ GITHUB ]
             </a>
@@ -437,7 +437,7 @@ export default function Home() {
               href="/pitch.html"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-sm tracking-wide text-slate-400 hover:text-white transition flex items-center"
+              className="hidden md:flex font-mono text-sm tracking-wide text-slate-400 hover:text-white transition items-center"
             >
               [ PITCH DECK ]
             </a>

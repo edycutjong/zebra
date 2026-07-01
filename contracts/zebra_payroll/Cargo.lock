@@ -1862,7 +1862,7 @@ dependencies = [
 
 [[package]]
 name = "zebra_payroll"
-version = "1.0.0"
+version = "1.1.2"
 dependencies = [
  "soroban-sdk",
  "ultrahonk_soroban_verifier",

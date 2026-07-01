@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { triggerConfetti } from "../lib/confetti";
 import { supabase } from "../lib/supabase";
+import Link from "next/link";
 
 // Type definitions
 interface PayrollAudit {
@@ -416,7 +417,7 @@ export default function Home() {
 
       {/* Sticky Navigation */}
       <header className="sticky top-0 z-40 w-full border-b border-slate-800 bg-slate-950/80 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 py-3 md:py-0 md:h-16 flex flex-wrap md:flex-nowrap items-center justify-between gap-x-4 gap-y-3">
           <div
             className="flex items-center gap-3 cursor-pointer"
             onClick={() => setCurrentView("landing")}
@@ -431,7 +432,7 @@ export default function Home() {
             </span>
           </div>
 
-          <nav className="flex items-center gap-6">
+          <nav className="flex flex-wrap items-center gap-x-4 gap-y-2 md:gap-6">
             <button
               onClick={() => setCurrentView("landing")}
               className={`font-mono text-sm tracking-wide transition ${currentView === "landing" ? "text-cyan-400" : "text-slate-400 hover:text-white"}`}
@@ -1014,9 +1015,9 @@ export default function Home() {
       <footer className="border-t border-slate-900 py-8 bg-slate-950/90 z-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-slate-500">
           <span>ZEBRA // STELLAR REAL-WORLD ZK HACKATHON</span>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             <a
-              href="https://github.com"
+              href="https://github.com/edycutjong/zebra"
               target="_blank"
               rel="noreferrer"
               className="hover:text-white transition"
@@ -1031,6 +1032,12 @@ export default function Home() {
             >
               STELLAR NETWORK
             </a>
+            <Link href="/privacy" className="hover:text-white transition">
+              PRIVACY
+            </Link>
+            <Link href="/terms" className="hover:text-white transition">
+              TERMS
+            </Link>
           </div>
         </div>
       </footer>

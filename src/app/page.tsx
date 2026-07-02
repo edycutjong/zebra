@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { triggerConfetti } from "../lib/confetti";
 import { supabase } from "../lib/supabase";
 import Link from "next/link";
+import Image from "next/image";
 
 // Type definitions
 interface PayrollAudit {
@@ -422,8 +423,10 @@ export default function Home() {
             className="flex items-center gap-3 cursor-pointer"
             onClick={() => setCurrentView("landing")}
           >
-            <img
+            <Image
               src="/icon.svg"
+              width={32}
+              height={32}
               className="w-8 h-8 filter drop-shadow-[0_0_8px_rgba(0,240,255,0.4)]"
               alt="Zebra Logo"
             />

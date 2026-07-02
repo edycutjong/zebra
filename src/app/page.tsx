@@ -1017,7 +1017,10 @@ export default function Home() {
 
       <footer className="border-t border-slate-900 py-8 bg-slate-950/90 z-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-slate-500">
-          <span>ZEBRA // STELLAR REAL-WORLD ZK HACKATHON</span>
+          <span>
+            ZEBRA // STELLAR REAL-WORLD ZK HACKATHON · v
+            {process.env.NEXT_PUBLIC_APP_VERSION}
+          </span>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             <a
               href="https://github.com/edycutjong/zebra"

@@ -5,6 +5,7 @@ import { triggerConfetti } from "../lib/confetti";
 import { supabase } from "../lib/supabase";
 import Link from "next/link";
 import Image from "next/image";
+import VerifyOnchainPanel from "../components/VerifyOnchainPanel";
 
 // Type definitions
 interface PayrollAudit {
@@ -506,6 +507,9 @@ export default function Home() {
           </div>
         </div>
       </header>
+
+      {/* Real on-chain ZK verification (witnessable, no wallet) */}
+      <VerifyOnchainPanel />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-6 py-12 flex flex-col justify-center z-10">
         {/* LANDING VIEW */}

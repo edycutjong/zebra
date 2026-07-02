@@ -5,7 +5,7 @@
   <img src="docs/readme-hero.png" alt="Zebra — Confidential Stablecoin Payroll" width="100%">
 
   <p><strong>✅ Real Noir/UltraHonk proof verified on Stellar testnet.</strong><br/>
-  Reproduce with <code>npm run prove:demo</code> — verifier <code>CCLTVNPYS5H2AY4OTYIYDU57XYO4S5OZQE435ZZX2TFUVYDAIS6B53N5</code>; a fresh Barretenberg UltraHonk proof makes <code>verify_proof</code> return true on-chain, and tampered inputs are rejected.<br/>
+  Reproduce with <code>npm run prove:demo</code> — verifier <a href="https://stellar.expert/explorer/testnet/contract/CCLTVNPYS5H2AY4OTYIYDU57XYO4S5OZQE435ZZX2TFUVYDAIS6B53N5"><code>CCLTVNPYS5H2AY4OTYIYDU57XYO4S5OZQE435ZZX2TFUVYDAIS6B53N5</code></a>; a fresh Barretenberg UltraHonk proof makes <code>verify_proof</code> return true on-chain, and tampered inputs are rejected.<br/>
   <strong>Don&rsquo;t trust us — verify it in your browser:</strong> click <strong>&ldquo;Verify a real proof on-chain&rdquo;</strong> on the <a href="https://zebra.edycu.dev">live site</a> (no wallet needed) — a read-only Soroban call returns <code>true</code> for a real proof and <code>false</code> for tampered inputs.<br/>
   <em>Honest status: the interactive console uses local crypto simulations for UX; the load-bearing ZK is that deployed verifier plus <code>npm run prove:demo</code> — both now witnessable from the site itself.</em></p>
 

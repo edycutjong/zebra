@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.0](../../compare/v1.4.0...v1.5.0) (2026-07-02)
+
+### 🚀 Features
+
+- **seo:** robots + sitemap, security headers, next/image logo (876f8d4)
+
 ## [1.4.0](../../compare/v1.3.0...v1.4.0) (2026-07-01)
 
 ### 🚀 Features

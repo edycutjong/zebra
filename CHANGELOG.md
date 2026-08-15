@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.7.1](../../compare/v1.7.0...v1.7.1) (2026-08-15)
+
+### 🐛 Bug Fixes
+
+- **deps:** resolve 7 dependency vulnerabilities via lockfile (ca65333)
+
+### 🔧 Chores
+
+- **deps-dev:** bump tsx from 4.23.0 to 4.23.9 (#32) (7b73f4b)
+- **deps-dev:** bump eslint-config-next from 16.2.10 to 16.3.0 (#33) (10dc0f2)
+- **deps:** bump lucide-react from 1.24.0 to 1.29.0 (#35) (4fa1dc4)
+- **deps-dev:** bump @playwright/test from 1.61.0 to 1.62.1 (#37) (727719d)
+- **deps:** bump react and @types/react (#39) (b20ec63)
+- **deps:** bump @stellar/stellar-sdk from 16.0.0 to 16.2.0 (#40) (98d32cc)
+- remove agent instruction files from public repo (b017c16)
+- **deps:** bump next from 16.2.9 to 16.3.0 (#19) (a12d6b9)
+- **deps-dev:** bump tsx from 4.22.4 to 4.23.0 (#17) (a76368f)
+- **deps-dev:** bump tailwindcss from 4.3.1 to 4.3.2 (#20) (33ebe84)
+- **deps-dev:** bump @tailwindcss/postcss from 4.3.1 to 4.3.2 (#21) (3af6941)
+- **deps-dev:** bump eslint-config-next from 16.2.9 to 16.2.10 (#24) (6bc9287)
+- **deps:** bump @supabase/supabase-js from 2.108.2 to 2.110.2 (#27) (aa60b04)
+- **deps-dev:** bump prettier from 3.8.4 to 3.9.5 (#28) (55c0eb8)
+- **deps:** bump lucide-react from 1.20.0 to 1.24.0 (#29) (128dc22)
+
+### 📝 Documentation
+
+- **readme:** link the hook contract ID to stellar.expert (cfc2f08)
+- **readme:** point judges at the one-click on-chain verify (d3124a4)
+
 ## [1.7.0](../../compare/v1.6.0...v1.7.0) (2026-07-02)
 
 ### 🚀 Features
